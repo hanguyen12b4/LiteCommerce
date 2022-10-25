@@ -1,0 +1,7 @@
+D:\Tài Liệu\LT Web\LapTrinhWeb\LiteCommerce\LiteCommerce.DataLayers\bin\Debug\LiteCommerce.DataLayers.dll
+D:\Tài Liệu\LT Web\LapTrinhWeb\LiteCommerce\LiteCommerce.DataLayers\bin\Debug\LiteCommerce.DataLayers.pdb
+D:\Tài Liệu\LT Web\LapTrinhWeb\LiteCommerce\LiteCommerce.DataLayers\bin\Debug\LiteCommerce.DomainModels.dll
+D:\Tài Liệu\LT Web\LapTrinhWeb\LiteCommerce\LiteCommerce.DataLayers\bin\Debug\LiteCommerce.DomainModels.pdb
+D:\Tài Liệu\LT Web\LapTrinhWeb\LiteCommerce\LiteCommerce.DataLayers\obj\Debug\LiteCommerce.DataLayers.csprojResolveAssemblyReference.cache
+D:\Tài Liệu\LT Web\LapTrinhWeb\LiteCommerce\LiteCommerce.DataLayers\obj\Debug\LiteCommerce.DataLayers.dll
+D:\Tài Liệu\LT Web\LapTrinhWeb\LiteCommerce\LiteCommerce.DataLayers\obj\Debug\LiteCommerce.DataLayers.pdb

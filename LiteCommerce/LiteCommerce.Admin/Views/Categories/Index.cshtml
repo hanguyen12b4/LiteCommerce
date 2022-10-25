@@ -1,0 +1,45 @@
+﻿@model LiteCommerce.Admin.Models.CategoryPaginationQueryResult
+
+@{
+    ViewBag.Title = "Danh sách loại sản phẩm";
+}
+
+
+<div class="container-fluid">
+    <form id="formSearchInput">
+        <div class="input-group">
+            <input type="text" name="searchValue" id="searchValue" class="form-control" placeholder="Nhập tên cần tìm kiếm!"
+                   autofocus />
+            <div class="input-group-btn">
+                <button class="btn btn-default search-btn" type="submit">
+                    <i class="glyphicon glyphicon-search"></i> Tìm kiếm
+                </button>
+            </div>
+        </div>
+    </form>
+</div>
+
+<div id="listCategories" class="container-fluid"> </div>
+@section scripts {
+    <script>
+        function getCategories(page) {
+            var searchValue = $('#searchValue').val();
+            $.ajax({
+                url: "/Categories/List?searchValue=" + searchValue +"&page=" + page,
+                type: "GET",
+                success: function (data) {
+                    $("#listCategories").empty();
+                    $("#listCategories").html(data);
+                }
+            });
+        }
+
+        $(document).ready(function () {
+            getCategories(1);
+            $("#formSearchInput").submit(function (e) {
+                e.preventDefault();
+                getCategories(1);
+            });
+        });
+    </script>
+}

@@ -1,0 +1,46 @@
+﻿@model LiteCommerce.DomainModels.Product
+@{
+    ViewBag.Title = "Xác nhận xóa sản phẩm";
+}
+@* Hiển thị thông tin măt hàng để sửa đổi *@
+<div class="p-e-main">
+    <div class="p-e__product marg-b-15">
+        <p class="p-e-title">
+            Bạn có muốn xóa sản phẩm này ?
+        </p>
+        <form id="formProduct" method="post">
+            <input type="hidden" name="ProductID" id="ProductID" value="@Model.ProductID" />
+            <div class="emp-add-form">
+                <label for="ProductName">Tên sản phẩm</label>
+                <input type="text" name="ProductName" value="@Model.ProductName" readonly />
+            </div>
+            <div class="emp-add-form">
+                <label for="CategoryID">Tên loại sản phẩm</label>
+                <select name="CategoryID" id="CategoryID" value="@Model.CategoryID" readonly></select>
+            </div>
+            <div class="emp-add-form">
+                <label for="SupplierID">Tên nhà cung cấp</label>
+                <select name="SupplierID" id="SupplierID" value="@Model.SupplierID" readonly></select>
+            </div>
+            <div>
+                <div class="emp-add-form">
+                    <label for="Price">Giá</label>
+                    <input type="number" name="Price" value="@Model.Price"readonly />
+                </div>
+                <div class="emp-add-form">
+                    <label for="Price">Đơn vị tính</label>
+                    <input type="text" name="Unit" value="@Model.Unit" readonly/>
+                </div>
+            </div>
+            <div class="p-e-img">
+                <img src="~/Photo/product.png" />
+                <input type="file" name="Photo" value="@Model.Photo" readonly/>
+            </div>
+            <div>
+                <button style="font-size:15px;margin-top:30px;" type="button" class="btn btn-xs btn-info delete-btn"> Xóa sản phẩm </button>
+                <a style="font-size:15px;margin:30px 30px 0;" href="~/Product/Index" class="btn btn-xs btn-warning "> Trở lại </a>
+            </div>
+        </form>
+    </div>
+</div>
+<script src="~/Scripts/product/product.js"></script>

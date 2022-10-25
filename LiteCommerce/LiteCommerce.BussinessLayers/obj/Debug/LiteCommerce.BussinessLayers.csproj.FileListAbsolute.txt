@@ -1,0 +1,9 @@
+D:\Tài Liệu\LT Web\LapTrinhWeb\LiteCommerce\LiteCommerce.BussinessLayers\bin\Debug\LiteCommerce.BussinessLayers.dll
+D:\Tài Liệu\LT Web\LapTrinhWeb\LiteCommerce\LiteCommerce.BussinessLayers\bin\Debug\LiteCommerce.BussinessLayers.pdb
+D:\Tài Liệu\LT Web\LapTrinhWeb\LiteCommerce\LiteCommerce.BussinessLayers\bin\Debug\LiteCommerce.DataLayers.dll
+D:\Tài Liệu\LT Web\LapTrinhWeb\LiteCommerce\LiteCommerce.BussinessLayers\bin\Debug\LiteCommerce.DomainModels.dll
+D:\Tài Liệu\LT Web\LapTrinhWeb\LiteCommerce\LiteCommerce.BussinessLayers\bin\Debug\LiteCommerce.DataLayers.pdb
+D:\Tài Liệu\LT Web\LapTrinhWeb\LiteCommerce\LiteCommerce.BussinessLayers\bin\Debug\LiteCommerce.DomainModels.pdb
+D:\Tài Liệu\LT Web\LapTrinhWeb\LiteCommerce\LiteCommerce.BussinessLayers\obj\Debug\LiteCommerce.BussinessLayers.csprojResolveAssemblyReference.cache
+D:\Tài Liệu\LT Web\LapTrinhWeb\LiteCommerce\LiteCommerce.BussinessLayers\obj\Debug\LiteCommerce.BussinessLayers.dll
+D:\Tài Liệu\LT Web\LapTrinhWeb\LiteCommerce\LiteCommerce.BussinessLayers\obj\Debug\LiteCommerce.BussinessLayers.pdb

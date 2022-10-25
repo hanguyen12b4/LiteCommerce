@@ -1,0 +1,181 @@
+﻿* {
+    box-sizing:border-box;
+    margin: 0;
+    padding:0;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+td{
+    vertical-align:middle !important;
+    text-align:left;
+  
+}
+
+.shipper{
+     margin-top:60px;
+}
+
+.shipper__header h3{
+    margin-bottom:30px;
+}
+
+.shipper__header-btn {
+    text-align:right;
+    margin-bottom:10px;
+}
+
+.shipper__shipper-info {
+    border-bottom: 1px solid #ccc;
+    display:flex;
+    justify-content:space-between;
+}
+
+
+.shipper__shipper-info p {
+    margin: 0 0 5px 15px;
+    opacity:0.7;
+}
+
+.shipper__shipper-info h4{
+    color:blue; 
+    margin: 0;
+    overflow:hidden;
+    max-width:180px;
+    text-wrap:none;
+    max-height:38px;
+    
+}
+
+.shipper__shipper-info h4 a {
+}
+
+.shipper__shipper-info-heading {
+    display:block;
+    padding:0;
+}
+
+.shipper__shipper-info-btn{
+
+}
+
+.shipper-order__heading h2{
+    margin-bottom:30px;
+}
+
+.shipper-order__content table{
+    overflow:hidden;
+}
+
+.delete-form {
+    margin:30px 0px;
+}
+
+.delete-form label{
+    padding-left:50px;
+}
+
+.emp-table td{
+    max-width:200px;
+    overflow:hidden;
+
+}
+
+.emp-photo {
+    display:flex;
+    flex-direction:column;
+    width:fit-content;
+    height:auto;
+    position:absolute;
+    top:60px;
+    right: 60px;
+    align-items:center;
+}
+
+.emp-photo img {
+    width:140px;
+    margin-bottom:5px;  
+    object-fit:contain
+}
+
+input{
+    border-radius:5px !important;
+    padding-left: 5px;
+}
+
+.emp-add-form label {
+    padding-right: 10px;
+}
+
+.modal-header {
+    /*margin-bottom:20px;*/
+}
+
+.modal-content{
+    position:relative;
+    border-radius:5px;
+}
+
+.modal-body {
+    padding: 10px 10px !important;   
+}
+
+.modal-body label{
+    width:100px;
+    min-width:120px;
+}
+
+.half-col {
+    width:50%;
+}
+
+.half-col + .half-col {
+    margin-left:10px;
+}
+
+.full-col {
+    width:100%;
+    flex-direction:row !important;
+}
+
+.product input {
+    padding:0;
+    max-width:250px;
+}
+
+.cus-add-form input ,
+.cus-add-form select{
+    width:100% !important;
+    margin: 0;
+}
+
+.cus-add-form select{
+    border: 2px solid #000;
+    border-radius:5px;
+}
+
+.cus-add-form {
+    display:flex;
+    justify-content:space-between;
+    flex-direction:column;
+}
+
+.cus-add-form input {
+    width: calc(100% - 120px);
+}
+
+.d-none {
+    display:none;
+}
+
+.d-input {
+    border-color:#ccc;
+    background-color :#fff;
+    outline:none;
+}
+
+.error-message-invalid {
+    color:red;
+}

@@ -1,0 +1,44 @@
+﻿
+@{
+    ViewBag.Title = "Tra cứu thông tin đơn hàng";
+}
+<link rel="stylesheet" href="~/fonts/css/order/order.css" />
+<div class="container-fluid">
+    <form id="formSearchInput">
+        <div class="search-form">
+            <input name="searchValue" type="text" class="form-control" placeholder="Nhập tên cần tìm..." value="">
+            <div>
+                <p>Từ ngày đặt hàng</p>
+                <input type="date" name="OrderTimeFrom"  />
+            </div>
+            <div>
+                <p>Đến ngày đặt hàng</p>
+                <input type="date" name="OrderTimeTo"  />
+            </div>
+            <div>
+                <p>Trạng thái</p>
+                <select name="status">
+                    <option value="10">Trạng thái</option>
+                    <option value="4">Hoàn thành</option>
+                    <option value="3">Đang giao hàng</option>
+                    <option value="2">Chấp nhận</option>
+                    <option value="1">Tạo</option>
+                    <option value="-1">Hủy</option>
+                    <option value="-2">Từ chối</option>
+                </select>
+            </div>
+            <div>
+                <div class="btn btn-xs btn-primary refresh-btn">
+                    <i class="fa fa-refresh"></i>
+                </div>
+            </div>
+            <div>
+                <button class="btn btn-primary" type="submit">
+                    <i class="glyphicon glyphicon-search"></i> Tìm kiếm
+                </button>
+            </div>
+        </div>
+    </form>
+</div>
+<div class="shipper-order" id="listOrder"></div>
+<script src="~/Scripts/order/order.js" ></script>

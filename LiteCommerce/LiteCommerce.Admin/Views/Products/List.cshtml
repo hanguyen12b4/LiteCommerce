@@ -1,0 +1,59 @@
+﻿@model IEnumerable<LiteCommerce.DomainModels.Product>
+@{
+    Layout = null;
+}
+
+<div class="text-left">
+    <p>Có tất cả <strong>@ViewBag.RowCount</strong> mặt hàng. Bạn đang ở trang <strong>@ViewBag.Page</strong> trên tổng số <strong>@ViewBag.PageCount</strong> trang.</p>
+</div>
+
+<table class="table table-bordered table-hover table-striped">
+    <thead>
+        <tr>
+            <th>Tên hàng</th>
+            <th>Đơn vị tính</th>
+            <th>Giá hàng</th>
+            <th>Ảnh minh họa</th>
+            <th>
+                <a href="~/Products/AddProduct" class="btn btn-xs btn-primary">
+                    <i class="fa fa-plus" ></i>
+                </a>
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach(var item in Model)
+        {
+            <tr>
+                <td>
+                    <a href="#">@item.ProductName</a>
+                </td>
+                <td>@item.Unit</td>
+                <td>@item.Price</td>
+                <td>
+                    <img style="width:120px;height:120px;" src="http://dummyimage.com/250x250.png/5fa2dd/ffffff&text=Product Photo" />
+                </td>
+                <td>
+                    <a href="~/Products/Edit/@item.ProductID" class="btn btn-xs btn-info"><i class="fa fa-edit"></i></a>
+                    <a href="~/Products/Delete/@item.ProductID" class="btn btn-xs btn-danger"><i class="fa fa-remove"></i></a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<div class="text-center">
+    <ul class="pagination">
+        @for (int i = 1; i <= ViewBag.PageCount; i++)
+        {
+            if (ViewBag.Page == i)
+            {
+                <li class="active"><a href="javascript:;" onclick="getProducts(@i)">@i</a></li>
+            }
+            else
+            {
+                <li><a href="javascript:;" onclick="getProducts(@i)" >@i</a></li>
+            }
+        }
+    </ul>
+</div>

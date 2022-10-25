@@ -1,0 +1,47 @@
+﻿@{
+    ViewBag.Title = "Thêm sản phẩm";
+}
+
+<div class="p-e-main">
+    <div class="p-e__product marg-b-15">
+        <p class="p-e-title">
+            Thêm một sản phẩm mới
+        </p>
+        <form id="formProduct" method="post">
+            <input type="hidden" name="ProductID"  />
+            <div class="emp-add-form">
+                <label for="ProductName">Tên sản phẩm</label>
+                <input type="text" name="ProductName"  />
+            </div>
+            <div class="emp-add-form">
+                <label for="CategoryID">Tên loại sản phẩm</label>
+                <select name="CategoryID" id="CategoryID" ></select>
+            </div>
+            <div class="emp-add-form">
+                <label for="SupplierID">Tên nhà cung cấp</label>
+                <select name="SupplierID" id="SupplierID" ></select>
+            </div>
+            <div>
+                <div class="emp-add-form">
+                    <label for="Price">Giá</label>
+                    <input type="number" name="Price"  />
+                </div>
+                <div class="emp-add-form">
+                    <label for="Price">Đơn vị tính</label>
+                    <input type="text" name="Unit"  />
+                </div>
+            </div>
+            <div class="p-e-img">
+                <img src="~/Photo/product.png" />
+                <input type="file" name="Photo"  />
+            </div>
+            <div>
+                <button style="font-size:15px;margin-top:30px;" type="button" class="btn btn-xs btn-info saveproduct-btn"> Lưu thay đổi </button>
+                <a style="font-size:15px;margin:30px 30px 0;" href="~/Product/Index" class="btn btn-xs btn-warning "> Trở lại </a>  
+            </div>
+        </form>
+    </div>
+</div>
+<script src="~/Scripts/product/product.js"></script>
+
+

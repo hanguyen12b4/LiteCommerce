@@ -1,0 +1,37 @@
+﻿@model LiteCommerce.Admin.Models.ShipperPaginationQueryResult
+
+@{ 
+    Layout = null;
+}
+<div class="shipper">
+    <div class="shipper__header text-center">
+        <h3>Shippers</h3>
+
+    </div>
+    <div class="shipper__header-btn">
+        <button href="" class="btn btn-xs btn-primary add-shipper-btn" type="button">
+            <i class="fa fa-plus"></i>
+        </button>
+    </div>
+
+    @foreach (var item in Model.Data)
+    {
+        <div class="shipper__shipper-info">
+            <div class="shipper__shipper-info-heading">
+                <h4>
+                    <a href="">@item.ShipperName</a>
+                </h4>
+                <p>@item.Phone</p>
+            </div>
+            <div class="shipper__shipper-info-btn">
+                <button class="btn btn-xs btn-primary edit-shipper-btn" data-id="@item.ShipperID" type="button">
+                    <i class="fa fa-edit"></i>
+                </button>
+                <button class="btn btn-xs btn-danger delete-shipper-btn" type="button" data-name="@item.ShipperName" data-id="@item.ShipperID">
+                    <i class="fa fa-close"></i>
+                </button>
+            </div>
+        </div>
+    }
+</div>
+<script src="~/Scripts/main/shipperjs.js"></script>

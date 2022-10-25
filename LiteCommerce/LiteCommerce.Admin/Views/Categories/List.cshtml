@@ -1,0 +1,119 @@
+﻿@model LiteCommerce.Admin.Models.CategoryPaginationQueryResult
+@{ 
+    Layout = null;
+}
+
+<div class="text-right">
+    <strong></strong>
+    <p>
+        Có tất cả
+        <strong>@Model.RowCount</strong>
+        nhà cung cấp trong tổng số
+        <strong>@Model.PageCount</strong>
+        trang. Bạn đang ở trang <strong>@Model.Page</strong> trên tổng số <strong>@Model.PageCount</strong> trang
+    </p>
+</div>
+<table class="table table-bordered table-hover">
+    <thead>
+        <tr>
+            <th>Tên loại sản phẩm</th>
+            <th>Mô tả ngắn</th>
+            <th class="text-right">
+                <button type="button" class="btn btn-xs btn-primary" id="add-category-btn">
+                    <i class="fa fa-plus"></i>
+                </button>
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.Data)
+        {
+            <tr>
+                <td>@item.CategoryName</td>
+                <td>@item.Description</td>
+                <td class="text-right">
+                    <button type="button" data-id="@item.CategoryID" class="btn btn-xs btn-info edit-category-btn">
+                        <i class="fa fa-edit"></i>
+                    </button>
+                    <button type="button" class="btn btn-xs btn-danger delete-category-btn" data-name="@item.CategoryName" data-id="@item.CategoryID">
+                        <i class="fa fa-close"></i>
+                    </button>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+<div class="text-center">
+    <ul class="pagination">
+        @for (int i = 1; i <= Model.PageCount; i++)
+            {
+                if (i == Model.Page)
+                {
+                <li class="active"><a href="javascript:;">@i</a></li>
+            }
+            else
+            {
+                <li><a href="javascript:;" onclick="getCategories(@i)">@i</a></li>
+            }
+        }
+    </ul>
+</div>
+
+
+@* Modal *@
+<div id="CategoryModal" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+        <!-- Modal content-->
+        <div class="modal-content" style="top:150px; width:auto">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Chỉnh sửa nhà vận chuyển</h4>
+            </div>
+            <form id="CategoryForm" method="post" enctype="multipart/form-data">
+                <div class="modal-body">
+                    <div class="modal-body cus-add-form ">
+                        <input type="hidden" class="d-input" id="CategoryID" name="CategoryID" placeholder="Mã nhà cung cấp" readonly />
+                    </div>
+                    <div class="form-group">
+                        <label for="CategoryName">Tên loại sản phẩm</label>
+                        <input type="text" class="form-control" id="CategoryName" name="CategoryName" autofocus>
+                    </div>
+                    <div class="form-group">
+                        <label for="Description">Mô tả ngắn</label>
+                        <input type="text" class="form-control" id="Description" name="Description">
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary save-category">Lưu </button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+@* Xóa Shippers *@
+<div id="DeleteCagModal" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+        <!-- Modal content-->
+        <div class="modal-content" style="top:150px; width:auto">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Xác nhận xóa</h4>
+            </div>
+            <div class="modal-body">
+                <div>
+                    <p>
+                        Bạn có đồng ý xóa sản phẩm <strong id="name"></strong>
+                        với <strong>tất cả</strong>  thông tin liên quan ?
+                    </p>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger delete-cag-btn">Xác nhận</button>
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="~/Scripts/main/categoryjs.js"> </script>

@@ -1,0 +1,222 @@
+﻿@model LiteCommerce.DomainModels.ProductEx
+@{
+    ViewBag.Title = "Cập nhật thông tin mặt hàng";
+}
+@* Hiển thị thông tin măt hàng để sửa đổi *@
+
+
+
+<div class="p-e-main">
+    <div style="text-align:right;">
+        <a class="btn btn-xs btn-primary" href="~/Products/Index" style="color:#fff;font-size:15px;cursor:pointer"> Quay lại</a>
+    </div>
+    <div class="p-e__product marg-b-15">
+        <p class="p-e-title">
+            Cập nhật thông tin sản phẩm 
+        </p>
+        <form id="formProduct" method="post">
+            <input type="hidden" name="ProductID" value="@Model.ProductID" />
+            <div class="emp-add-form">
+                <label for="ProductName">Tên sản phẩm</label>
+                <input type="text" name="ProductName" style="min-width:250px;" value="@Model.ProductName" />
+            </div>
+            <div class="emp-add-form">
+                <label for="CategoryID">Tên loại sản phẩm</label>
+                <select name="CategoryID" style="min-width:250px;" id="CategoryID" value="@Model.CategoryID">
+                </select>
+            </div>
+            <div class="emp-add-form">
+                <label for="SupplierID">Tên nhà cung cấp</label>
+                <select name="SupplierID" style="min-width:250px;" id="SupplierID" value="@Model.SupplierID"> 
+                </select>
+            </div>
+            <div>
+                <div class="emp-add-form">
+                    <label  for="Price">Giá</label>
+                    <input style="min-width:250px;" type="number" name="Price" value="@Model.Price" />
+                </div>
+                <div class="emp-add-form">
+                    <label for="Unit">Đơn vị tính</label>
+                    <input style="min-width:250px;" type="text" name="Unit" value="@Model.Unit" />
+                </div>
+            </div>
+            <div class="p-e-img">
+                <img src="~/Photo/product.png" /> 
+                <input type="file" name="Photo" value="@Model.Photo" />
+            </div>
+            <div>
+                <button style="font-size:15px;" type="button" class="btn btn-xs btn-info saveproduct-btn"> Lưu thay đổi </button>
+            </div>
+        </form>
+    </div>
+    <div class="p-e__attribute marg-b-15">
+        <p class="p-e-title">
+            Cập nhật thông tin các thuộc tính của sản phẩm
+        </p>
+        <form action="~/Products/DeleteAttributes/@Model.ProductID" method="post">
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        
+                        <th>Tên thuộc tính</th>
+                        <th>Giá trị</th>
+                        <th>Thứ tự</th>
+                        <th style="width:20px">
+                            <button type="submit" class="btn btn-xs btn-danger">
+                                <i class="fa fa-remove"></i>
+                            </button>
+                        </th>
+                        <th>
+                            <button type="button" class="btn btn-xs btn-primary add-attr-btn">
+                                <i class="fa fa-plus"></i>
+                            </button>
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model.Attributes)
+            {
+                        <tr>
+                            
+                            <td>@item.AttributeName</td>
+                            <td>@item.AttributeValue</td>
+                            <th>@item.DisplayOrder</th>
+                            <td><input type="checkbox" name="attributeIds" value="@item.AttributeID" /></td>
+                            <td>
+                                <button type="button" data-id="@item.AttributeID" class="btn btn-xs btn-default edit-attr-btn" > <i class="fa fa-edit"></i></button>
+                            </td>
+
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </form>
+    </div>
+    <div class="p-e__gallery marg-b-15">
+        <p class="p-e-title">
+            Cập nhật hình ảnh của sản phẩm
+        </p>
+        <form action="~/Products/DeleteGalleries/@Model.ProductID" method="post">
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+
+                        <th>Ảnh</th>
+                        <th>Mô tả ngắn</th>
+                        <th>Thứ tự</th>
+                        <th style="width:20px">
+                            <button type="submit" class="btn btn-xs btn-danger">
+                                <i class="fa fa-remove"></i>
+                            </button>
+                        </th>
+                        <th>
+                            <button type="button" class="btn btn-xs btn-primary add-gallery-btn">
+                                <i class="fa fa-plus"></i>
+                            </button>
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model.Galleries)
+            {
+                        <tr>
+
+                            <td style="width:300px">
+                            <img style="width:150px;object-fit:contain;" src="~/Photo/product.png"  alt="Ảnh product"/>
+                            <td>@item.Description</td>
+                            <td>@item.DisplayOrder</td>
+                            <td><input type="checkbox" name="galleryIds" value="@item.GalleryID" /></td>
+                            <td>
+                                <button type="button" data-id="@item.GalleryID" class="btn btn-xs btn-default edit-gallery-btn"> <i class="fa fa-edit"></i></button>
+                            </td>
+
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </form>
+    </div>
+</div>
+
+<div id="AttributeModal" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+        <!-- Modal content-->
+        <div class="modal-content" style="top:150px; width:auto">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title"></h4>
+            </div>
+            <form id="AttributeForm" method="post" enctype="multipart/form-data">
+                <div class="modal-body" >
+                    <div class="modal-body cus-add-form ">
+                        <input type="hidden" class="d-input" id="AttributeID" name="AttributeID" readonly />
+                    </div>
+                    <input type="hidden" class="d-input" id="ProductID" name="ProductID" value="@Model.ProductID" readonly />
+                    <div class="form-group">
+                        <label for="AttributeName">Tên thuộc tính</label>
+                        <input type="text" class="form-control" id="AttributeName" name="AttributeName" autofocus>
+                    </div>
+                    <div class="form-group">
+                        <label for="AttributeValue">Giá trị thuộc tính</label>
+                        <input type="text" class="form-control" id="AttributeValue" name="AttributeValue">
+                    </div>
+                    <div class="form-group">
+                        <label for="DisplayOrder">Thứ tự</label>
+                        <input type="text" class="form-control" id="DisplayOrder" name="DisplayOrder">
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary save-attribute">Lưu </button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<div id="GalleryModal" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+        <!-- Modal content-->
+        <div class="modal-content" style="top:10px; width:auto">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title"></h4>
+            </div>
+            <form id="GalleryForm" method="post" enctype="multipart/form-data">
+                <div class="modal-body">
+                    <div class="modal-body cus-add-form ">
+                        <input type="hidden" class="d-input" id="GalleryID" name="GalleryID" readonly />
+                    </div>
+                    <input type="hidden" class="d-input" id="ProductID" name="ProductID" value="@Model.ProductID" readonly />
+                    <div class="form-group" style="display:flex;flex-direction:column;">
+                        <label for="Photo">Ảnh của sản phẩm</label>
+                        <img src="~/Photo/product.png" style="width:150px;height:150px" />
+                        <input type="file" id="Photo" name="Photo" autofocus>
+                    </div>
+                    <div class="form-group full-col cus-add-form">
+                        <div class="half-col">
+                            <label for="DisplayOrder">Thứ tự</label>
+                            <input type="text" class="form-control" id="DisplayOrder" name="DisplayOrder">
+                        </div>
+                        <div class="half-col">
+                            <label for="IsHidden">Hiện/Xuất</label>
+                            <input type="text" class="form-control" id="IsHidden" name="IsHidden">
+                        </div>
+                    </div>
+                    <div class="modal-body emp-add-form" style="display:flex;flex-direction:column;padding:0 !important;">
+                        <label for="Description">Mô tả ngắn</label>
+                        <textarea name="Description" id="Description" rows="4" cols="70" placeholder="Enter text here..." style="padding:0 10px;"></textarea>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary save-gallery">Lưu </button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<script src="~/Scripts/product/product-edit.js"></script>
+<script src="~/Scripts/product/product.js" ></script>
+

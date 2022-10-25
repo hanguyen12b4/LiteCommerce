@@ -1,0 +1,38 @@
+﻿/*Reset CSS*/
+* {
+    box-sizing:border-box;
+    padding: 0 ;
+    margin: 0;
+}
+
+.search-form input{
+    border-radius:40px;
+    max-width:450px;
+    border:1px solid #000;
+    height:30px;
+} 
+
+.search-form input[type="date"] ,
+.search-form select {
+    height:30px;
+}
+
+.search-form select {
+    border:1px solid #000;
+    border-radius:5px;
+}
+
+.search-form {
+    display:flex;
+    justify-content:space-between;
+    width:100%;
+    align-items:flex-end;
+    margin-bottom:10px;
+}
+
+.search-form p {
+    margin:0;
+}
+.content {
+    padding: 0 15px;
+}

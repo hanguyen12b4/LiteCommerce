@@ -1,0 +1,63 @@
+﻿@model IEnumerable<LiteCommerce.DomainModels.OrderClear>
+@{
+    Layout = null;
+}
+
+
+    <div class="shipper-order__sub-heading text-right">
+        <p>Số đơn hàng đã vận chuyển: <strong>@ViewBag.RowCount</strong></p>
+    </div>
+    <div class="shipper-order__content">
+        <table class="table table-bordered table-hover">
+            <thead>
+                <tr>
+                    <th>Order ID</th>
+                    <th>Khách Hàng</th>
+                    <th>Nhân viên</th>
+                    <th>Vận chuyển</th>
+                    <th>Ngày đặt</th>
+                    <th>Ngày Duyệt</th>
+                    <th>Ngày Giao</th>
+                    <th>Ngày Nhận</th>
+                    <th>Trạng thái</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                        <a href="~/Orders/OrderDetail/@item.OrderID">
+                            @item.OrderID
+                        </a>
+                        </td>
+                        <td>@item.CustomerName</td>
+                        <td>@item.EmployeeName</td>
+                        <td>@item.ShipperName</td>
+                        <td style="min-width:140px;">@Convert.ToDateTime(item.OrderTime).ToString("dd/MM/yyyy hh-mm-ss")</td>
+                        <td style="min-width:140px;">@Convert.ToDateTime(item.AcceptTime).ToString("dd/MM/yyyy hh-mm-ss")</td>
+                        <td style="min-width:140px;">@Convert.ToDateTime(item.ShippedTime).ToString("dd/MM/yyyy hh-mm-ss")</td>
+                        <td style="min-width:140px;">@Convert.ToDateTime(item.FinishedTime).ToString("dd/MM/yyyy hh-mm-ss")</td>
+                        <td>@item.OrderDescription</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+<div class="text-center">
+    <ul class="pagination">
+        @for (int i = 1; i <= ViewBag.PageCount; i++)
+        {
+            if (Convert.ToInt32(ViewBag.Page) == i)
+            {
+                <li class="active"><a href="#formSearchInput" onclick="getListOrder(@i)">@i</a></li>
+            }
+            else
+            {
+                <li><a href="#formSearchInput" onclick="getListOrder(@i)">@i</a></li>
+            }
+        }
+    </ul>
+</div>
+
+

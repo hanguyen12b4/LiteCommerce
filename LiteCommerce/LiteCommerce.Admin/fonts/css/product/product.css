@@ -1,0 +1,54 @@
+﻿/*reset CSS*/ 
+
+* {
+    box-sizing:border-box;
+    padding:0;
+    margin:0;
+}
+
+
+label{
+        min-width: 250px
+}
+
+.p-e-main {
+    margin:0 30px;
+}
+
+.p-e-title {
+    font-size:18px;
+    width:100%;
+    border-bottom:1px solid #000;   
+}
+
+.marg-b-15 {
+    margin-bottom:15px;
+}
+
+.p-e__product {
+    position:relative;
+}
+
+.p-e__product input{
+    margin:10px;
+}
+.p-e__product select{
+    margin:10px;
+    min-width:160px;
+    border-radius:5px;
+    border:2px solid #000;
+    max-width:160px;
+}
+
+.p-e-img {
+    display:flex;
+    align-items:center;
+    flex-direction:column;
+    position:absolute;
+    top:40px;
+    right:120px;
+}
+.p-e-img img {
+    width:200px;
+    height:200px;
+}

@@ -1,0 +1,156 @@
+﻿@model LiteCommerce.Admin.Models.CustomerPaginationQueryResult
+
+@{ 
+    Layout = null;
+}
+
+<div class="text-right">
+    <strong></strong>
+    <p>
+        Có tất cả
+        <strong>@Model.RowCount</strong>
+        nhà cung cấp trong tổng số
+        <strong>@Model.PageCount</strong>
+        trang. Bạn đang ở trang <strong>@Model.Page</strong> trên tổng số <strong>@Model.PageCount</strong> trang
+    </p>
+</div>
+<table class="table table-bordered table-hover">
+    <thead>
+        <tr>
+            <th>Tên khách hàng</th>
+            <th>Tên giao dịch</th>
+            <th>Địa chỉ</th>
+            <th>Quốc gia</th>
+            <th>Thành phố</th>
+            <th>Mã vùng</th>
+            <th>Email</th>
+            <th>Password</th>
+            <th class="text-right">
+                <button class="btn btn-xs btn-primary add-customer" type="button">
+                    <i class="fa fa-plus"></i>
+                </button>
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.Data)
+            {
+            <tr>
+                <td>@item.CustomerName</td>
+                <td>@item.ContactName</td>
+                <td>@item.Address</td>
+                <td>@item.Country</td>
+                <td>@item.City</td>
+                <td>@item.PostalCode</td>
+                <td>@item.Email</td>
+                <td>@item.Password</td>
+                <td class="text-right">
+                    <button class="btn btn-xs btn-info edit-customer" type="button" data-id="@item.CustomerID">
+                        <i class="fa fa-edit"></i>
+                    </button>
+                    <button class="btn btn-xs btn-danger delete-customer" type="button" data-id="@item.CustomerID" data-name="@item.CustomerName">
+                        <i class="fa fa-close"></i>
+                    </button>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+<div class="text-center">
+    <ul class="pagination">
+        @for (int i = 1; i <= Model.PageCount; i++)
+            {
+                if (i == Model.Page)
+                {
+                <li class="active"><a href="javascript:;">@i</a></li>
+            }
+            else
+            {
+                <li><a href="javascript:;" onclick="getCustomers(@i)">@i</a></li>
+            }
+        }
+    </ul>
+</div>
+
+<div id="CustomerModal" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+        <!-- Modal content-->
+        <div class="modal-content" style="top:50px; width:auto">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Thêm khách hàng</h4>
+            </div>
+            <form id="customer-form" method="post">
+                <div class="modal-body cus-add-form ">
+                    <input type="hidden" class="d-input" id="CustomerID" name="CustomerID" placeholder="Mã nhà vận chuyển" readonly />
+                </div>
+                <div class="modal-body cus-add-form">
+                    <label for="CustomerName">Tên khách hàng</label>
+                    <input type="text" id="CustomerName" name="CustomerName" autofocus />
+                </div>
+                <div class="modal-body cus-add-form full-col">
+                    <div class="half-col">
+                        <label for="ContactName">Tên liên lạc</label>
+                        <input type="text" id="ContactName" name="ContactName" />
+                    </div>
+                    <div class="half-col">
+                        <label for="PostalCode">Mã bưu chính</label>
+                        <input type="text" id="PostalCode" name="PostalCode" />
+                    </div>
+                </div>
+                <div class="modal-body cus-add-form full-col">
+                    <div class="half-col">
+                        <label for="Email">Email</label>
+                        <input type="text" id="Email" name="Email" />
+                    </div>
+                    <div class="half-col">
+                        <label for="Password">Mật khẩu</label>
+                        <input type="text" id="Password" name="Password" />
+                    </div>
+                </div>
+                <div class="modal-body cus-add-form full-col">
+                    <div class="half-col">
+                        <label for="Country">Quốc gia</label>
+                        <select id="Country" name="Country"></select>
+                    </div>
+                    <div class="half-col">
+                        <label for="City">Thành phố</label>
+                        <select id="City" name="City"></select>
+                    </div>
+                </div>
+                <div class="modal-body cus-add-form">
+                    <label for="Address">Địa chỉ</label>
+                    <input type="text" id="Address" name="Address" />
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary save-customer">Lưu </button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<div id="DeleteCustomerModal" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+        <!-- Modal content-->
+        <div class="modal-content" style="top:150px; width:auto">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Xác nhận xóa</h4>
+            </div>
+            <div class="modal-body">
+                <div>
+                    <p>
+                        Bạn có đồng ý xóa khách hàng <strong id="name"></strong>
+                        với <strong>tất cả</strong>  thông tin liên quan ?
+                    </p>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-danger acept-delete-customer">Xác nhận</button>
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="~/Scripts/main/customerjs.js"></script>

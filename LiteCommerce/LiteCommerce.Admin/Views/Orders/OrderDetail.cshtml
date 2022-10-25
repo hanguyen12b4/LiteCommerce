@@ -1,0 +1,48 @@
+﻿@model IEnumerable<LiteCommerce.DomainModels.OrderDetail>
+@{
+    ViewBag.Title = "Chi tiết đơn hàng" ;
+}
+
+<div class="shipper-order__content">
+    <div style="text-align:right;">
+        <a class="btn btn-xs btn-primary" href="~/Orders/Index" style="color:#fff;font-size:15px;cursor:pointer"> Quay lại</a>
+    </div>
+    <div style="display:flex"> 
+        
+        <strong>OrderID: &nbsp</strong><p>@Model.ElementAt(0).OrderID</p>
+    </div>
+    <table class="table table-bordered table-hover">
+        <thead>
+            <tr>
+                <th>Sản phẩm</th>
+                <th>Số lượng</th>
+                <th>Giá bán</th>
+            </tr>
+        </thead>
+        <tbody>
+            @{
+                int sl = 0;
+                decimal gia = 0;
+            }
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@item.ProductName</td>
+            <td>@item.Quantity</td>
+            <td>@item.SalePrice</td>
+            @{
+                sl += item.Quantity;
+                gia += item.SalePrice;
+                }
+               
+        </tr>
+        
+    }
+                <tr>
+                    <td>Tổng cộng</td>
+                    <td>@sl</td>
+                    <td>@gia</td>
+                </tr>
+        </tbody>
+    </table>
+</div>

@@ -1,0 +1,130 @@
+﻿@model LiteCommerce.Admin.Models.ShipperPaginationQueryResult
+
+@{
+    ViewBag.Title = "Quản lí nhà vận chuyển";
+}
+<div class="container-fluid">
+    <div id="listShippers" class="col-md-3" style="padding:0 5px"> </div>
+    <div class="col-md-9">
+        <div class="shipper-order">
+            <div class="shipper-order__heading">
+                <h2 class="text-center"> Danh sách đơn hàng</h2>
+            </div>
+            <div class="shipper-order__sub-heading text-right">
+                <p>Số đơn hàng đã vận chuyển: <strong>15</strong></p> 
+            </div>
+            <div class ="shipper-order__content">
+                <table class="table table-bordered table-hover">
+                    <thead>
+                        <tr>
+                            <th>Order ID</th>
+                            <th>Khách hàng</th>
+                            <th>Order Time</th>
+                            <th>Accept Time</th>
+                            <th>Shipped Time</th>
+                            <th>Shipped Finish</th>
+                            <th>Nhân viên</th>
+                            <th>Trạng thái</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @for (int i=1; i<=10; i++)
+                        {
+                           <tr>
+                               <td>10248</td>
+                               <td>Wilman Kala</td>
+                               <td>2020-07-04 00:00:00.000</td>
+                               <td>2020-07-04 00:00:00.000</td>
+                               <td>2020-07-05 00:00:00.000</td>
+                               <td>2020-07-07 00:00:00.000</td>
+                               <td>Buchanan</td>
+                               <td>Cancel</td> 
+                           </tr>
+                        }
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    @* Modal *@
+    <div id="ShipperModal" class="modal fade"  role="dialog">
+        <div class="modal-dialog">
+            <!-- Modal content-->
+            <div class="modal-content" style="top:150px; width:auto">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Sửa nhà vận chuyển</h4>
+                </div>
+                <form  method="post" id="ShipperForm">
+                    <div class="modal-body">
+                        <div class="modal-body cus-add-form ">
+                            <input type="hidden" class="d-input" id="ShipperID" name="ShipperID" placeholder="Mã nhà vận chuyển" readonly />
+                        </div>
+                        <div class="form-group">
+                            <label for="ShipperName">Tên nhà cung cấp</label>
+                            <input type="text" class="form-control" id="ShipperName" name="ShipperName" autofocus>
+                        </div>
+                        <div class="form-group">
+                            <label for="Phone">Điện thoại</label>
+                            <input type="text" class="form-control" id="Phone" name="Phone">
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-primary save-shipper">Lưu sửa đổi</button>
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    @* Xóa Shippers *@
+    <div id="DeleteShipperModal" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+            <!-- Modal content-->
+            <div class="modal-content" style="top:150px; width:auto">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Xác nhận xóa</h4>
+                </div>
+                <div class="modal-body">
+                    <div>
+                        <p>
+                            Bạn có đồng ý xóa nhà vận chuyển<strong id="name"></strong>
+                            với <strong>tất cả</strong>  thông tin liên quan ?
+                        </p>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger acept-delete-shipper">Xác nhận</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+@section scripts {
+    <script>
+        function getShippers(page) {
+            var searchValue = "";
+            $.ajax({
+                url: "/Shippers/List?searchValue=" + searchValue +"&page=" + page,
+                type: "GET",
+                success: function (data) {
+                    $("#listShippers").empty();
+                    $("#listShippers").html(data);
+                }
+            });
+        }
+
+        $(document).ready(function () {
+            getShippers(1);
+            $("#formSearchInput").submit(function (e) {
+                e.preventDefault();
+                getShippers(1);
+            });
+        });
+    </script>
+}

@@ -1,0 +1,35 @@
+﻿
+@{
+    ViewBag.Title = "Danh mục sản phẩm";
+}
+
+<!-- Form để tìm kiếm -->
+<div class="container-fluid">
+    <form id="formSearchInput">
+        <div class="row">
+            <div class="col-md-6">
+                <select id="CategoryID" name="CategoryID" class="form-control">
+                </select>
+            </div>  
+            <div class="col-md-6">
+                <select id="SupplierID"name="SupplierID" class="form-control">
+                </select>
+            </div>
+        </div>
+        <div class="row" style="margin-top:5px">
+            <div class="col-md-12 ">
+                <div class="input-group">
+                    <input name="searchValue" type="text" class="form-control" placeholder="Nhập tên cần tìm..." value="">
+                    <div class="input-group-btn">
+                        <button class="btn btn-primary" type="submit">
+                            <i class="glyphicon glyphicon-search"></i> Tìm kiếm
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+<!-- Hiển thị kết quả tìm kiếm -->
+<div id="listProducts" class="container-fluid"> </div>
+<script src="~/Scripts/product/product.js" ></script>
